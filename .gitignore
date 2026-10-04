@@ -1,0 +1,15 @@
+# data and heavy artefacts are NOT versioned (see README -> Dataset / Trained models)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+models/*
+!models/.gitkeep
+*.h5
+*.keras
+
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+.DS_Store

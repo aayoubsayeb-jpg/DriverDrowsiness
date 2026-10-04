@@ -1,0 +1,31 @@
+# Single source of truth for the whole project.
+seed: 42
+img_size: 224
+batch_size: 32
+
+# ORDER MATTERS: index i in the model output == classes[i] everywhere
+# (training, evaluation, demo). It is alphabetical so Keras agrees with it.
+classes: [Closed, Open, no_yawn, yawn]
+
+paths:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  models_dir: models
+  reports_dir: reports
+
+# The yawn/no_yawn images ship with swapped R/B channels (faces look blue).
+# true -> swap them back so faces have natural colours (needed for real photos / webcam).
+fix_yawn_color: true
+
+split:            # stratified, applied AFTER de-duplication
+  train: 0.8
+  val: 0.1
+  test: 0.1
+
+train:
+  epochs: 10
+  learning_rate: 0.0001
+  early_stopping_patience: 4
+  lr_patience: 4
+  lr_factor: 0.5
+  min_lr: 0.00001
